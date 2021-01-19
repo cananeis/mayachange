@@ -1,0 +1,227 @@
+Widget draggreableStatus3 = Container(
+        width: 700,
+        height: 150,
+        color: Colors.orange,
+        child: agregar == true
+            ? new Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: piso3,
+              )
+            : Container());
+    Widget draggreableStatus2 = Container(
+        width: 700,
+        height: 150,
+        color: Colors.orange,
+        child: agregar == true
+            ? new Column(
+                mainAxisAlignment: MainAxisAlignment.end,children: piso2,
+              )
+            : Container());
+    Widget draggreableStatus1 = Container(
+        width: 150,
+        height: 105,
+        color: Colors.orange,
+        child: agregar == true
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.end,children: piso1,
+              )
+            : Container());
+    ///// REPALDO NUMERO 2A
+    DragTarget<Widget>(
+                              builder: (context, incoming, rejected) {
+                                //return Text("asdas"),
+                                return draggreableStatus3;
+                              },
+                              //onWillAccept: (data) => data == 'cuadro',
+                              onWillAccept: (data) {
+                                return true;
+                                /*if (data == 'cuadro') {
+                                return true;
+                              } else return true;*/
+                              },
+                              onAccept: (data) {
+                                //print(data);successfulDrop = true;
+                                //print("si entro");
+                                setState(() {
+                                  agregar = true;
+                                  if (data == concha) {
+                                    if (piso3.length > 0) {
+                                      if (piso3[0] == concha) {
+                                        print("no puedes agregar otro numero ademas de 0");
+                                      }
+                                    } else {
+                                      //insertarConcha2();
+                                      piso3=insertarConchaoApiso(piso3);
+                                    }
+                                  } else if (data == punto) {
+                                    if (piso3.length > 0) {
+                                      print("vino agregar un punto");
+                                      if (piso3[0] == concha) {
+                                        print("no puedes agregar otro numero ademas de 0");
+                                      } 
+                                      else if (piso3[0] == fila3 ||piso3[0] == vacio || piso3[0]!=null) {
+                                        //a piso 2
+                                        //insertarPunto2();
+                                        piso3=insertarPuntoApiso(piso3);
+                                        fila3=piso3[0];
+                                      }else{
+                                        print("no llama a agregar");
+                                      }
+                                    }
+                                    else {
+                                      fila3.children.add(punto);
+                                      piso3.add(punto);
+                                      piso3.add(vacio);
+                                    }
+                                  } else if (data == rectangulo) {
+                                    if (piso3.length > 0) {
+                                      if (piso3[0] == concha) {
+                                        print("no puedes agregar otro numero ademas de 0");
+                                      } 
+                                      else if (piso3[1] == columna3 || piso3[1] == vacio || piso3[0]!=null) {
+                                        //insertarColumna();
+                                        piso3=insertarRectanguloApiso(piso3);
+                                        columna3=piso3[1];
+                                      }
+                                    } else {
+                                      columna3.children.add(rectangulo);
+                                      piso3.add(vacio);
+                                      piso3.add(rectangulo);
+                                      //piso2.insert(0, vacio);
+                                      //piso2.insert(1, columna2); 
+                                    }
+                                  }
+                                });
+                              },
+                              onLeave: (data) {},
+                            ),
+                            Divider(),
+                            DragTarget<Widget>(
+                              builder: (context, incoming, rejected) {
+                                //return Text("asdas"),
+                                return draggreableStatus2;
+                              },
+                              //onWillAccept: (data) => data == 'cuadro',
+                              onWillAccept: (data) {
+                                return true;
+                                /*if (data == 'cuadro') {
+                                return true;
+                              } else return true;*/
+                              },
+                              onAccept: (data) {
+                                //print(data);successfulDrop = true;
+                                //print("si entro");
+                                setState(() {
+                                  agregar = true;
+                                  if (data == concha) {
+                                    if (piso2.length > 0) {
+                                      if (piso2[0] == concha) {
+                                        print("no puedes agregar otro numero ademas de 0");
+                                      }
+                                    } else {
+                                      //insertarConcha2();
+                                      piso2=insertarConchaoApiso(piso2);
+                                    }
+                                  } else if (data == punto) {
+                                    if (piso2.length > 0) {
+                                      print("vino agregar un punto");
+                                      if (piso2[0] == concha) {
+                                        print("no puedes agregar otro numero ademas de 0");
+                                      } 
+                                      else if (piso2[0] == fila2 ||piso2[0] == vacio || piso2[0]!=null) {
+                                        //a piso 2
+                                        //insertarPunto2();
+                                        piso2=insertarPuntoApiso(piso2);
+                                        fila2=piso2[0];
+                                      }else{
+                                        print("no llama a agregar");
+                                      }
+                                    }
+                                    else {
+                                      fila2.children.add(punto);
+                                      piso2.add(punto);
+                                      piso2.add(vacio);
+                                      //fila2.children.add(punto);
+                                      //piso2.add(fila2);
+                                      //piso2.add(vacio);
+                                    }
+                                  } else if (data == rectangulo) {
+                                    if (piso2.length > 0) {
+                                      if (piso2[0] == concha) {
+                                        print("no puedes agregar otro numero ademas de 0");
+                                      } 
+                                      else if (piso2[1] == columna2 || piso2[1] == vacio || piso2[0]!=null) {
+                                        //insertarColumna();
+                                        piso2=insertarRectanguloApiso(piso2);
+                                        columna2=piso2[1];
+                                      }
+                                    } else {
+                                      columna2.children.add(rectangulo);
+                                      piso2.add(vacio);
+                                      piso2.add(rectangulo);
+                                      //piso2.insert(0, vacio);
+                                      //piso2.insert(1, columna2); 
+                                    }
+                                  }
+                                });
+                              },
+                              onLeave: (data) {},
+                            ),
+                            Divider(),
+                            DragTarget<Widget>(
+                              builder: (context, incoming, rejected) {
+                                return draggreableStatus1;
+                              },
+                              onWillAccept: (data) => true,
+                              onAccept: (data) {
+                                setState(() {
+                                  agregar = true;
+                                  if (data == concha) {
+                                    if (piso1.length > 0) {
+                                      if (piso1[0] == concha) {
+                                        print("no puedes agregar otro numero ademas de 0");
+                                      }
+                                    } else {
+                                      piso1=insertarConchaoApiso(piso1);
+                                    }
+                                  } else if (data == punto) {
+                                    if (piso1.length > 0) {
+                                      print("vino agregar un punto");
+                                      if (piso1[0] == concha) {
+                                        print("no puedes agregar otro numero ademas de 0");
+                                      } 
+                                      else if (piso1[0] == punto ||piso1[0] == vacio || piso1[0]!=null) {
+                                        //print("ENTROOO");
+                                        //insertarPunto();
+                                        piso1=insertarPuntoApiso(piso1);
+                                        fila1=piso1[0];
+                                      }else{
+                                        print("no llama a agregar");
+                                      }
+                                    }
+                                    else {
+                                      fila1.children.add(punto);
+                                      piso1.add(punto);
+                                      piso1.add(vacio);
+                                    }
+                                  } else if (data == rectangulo) {
+                                    if (piso1.length > 0) {
+                                      if (piso1[0] == concha) {
+                                        print("no puedes agregar otro numero ademas de 0");
+                                      } 
+                                      else if (piso1[1] == columna1 || piso1[1] == vacio) {
+                                        //insertarColumna();
+                                        piso1=insertarRectanguloApiso(piso1);
+                                        columna1=piso1[1];
+                                      }
+                                    } else {
+                                      columna1.children.add(rectangulo);
+                                      piso1.insert(0, vacio);
+                                      piso1.insert(1, columna1);
+                                    }
+                                  }
+                                });
+                              },
+                              onLeave: (data) {},
+                            ),
+                          
